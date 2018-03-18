@@ -1,0 +1,750 @@
+{
+  "contractName": "ESOPMigration",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getOldESOP",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "employee",
+          "type": "address"
+        },
+        {
+          "name": "poolOptions",
+          "type": "uint256"
+        },
+        {
+          "name": "extraOptions",
+          "type": "uint256"
+        }
+      ],
+      "name": "migrate",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity ^0.4.11;\nimport \"./ESOPTypes.sol\";\n\n\ncontract ESOPMigration {\n  modifier onlyOldESOP() {\n    if (msg.sender != getOldESOP())\n      throw;\n    _;\n  }\n\n  // returns ESOP address which is a sole executor of exerciseOptions function\n  function getOldESOP() public constant returns (address);\n\n  // migrate employee to new ESOP contract, throws if not possible\n  // in simplest case new ESOP contract should derive from this contract and implement abstract methods\n  // employees list is available for inspection by employee address\n  // poolOptions and extraOption is amount of options transferred out of old ESOP contract\n  function migrate(address employee, uint poolOptions, uint extraOptions) onlyOldESOP public;\n}\n",
+  "sourcePath": "/home/ethnode/parity/ESOP/contracts/ESOPMigration.sol",
+  "ast": {
+    "absolutePath": "/home/ethnode/parity/ESOP/contracts/ESOPMigration.sol",
+    "exportedSymbols": {
+      "ESOPMigration": [
+        2030
+      ]
+    },
+    "id": 2031,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 2001,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".11"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:4"
+      },
+      {
+        "absolutePath": "/home/ethnode/parity/ESOP/contracts/ESOPTypes.sol",
+        "file": "./ESOPTypes.sol",
+        "id": 2002,
+        "nodeType": "ImportDirective",
+        "scope": 2031,
+        "sourceUnit": 2082,
+        "src": "25:25:4",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 2030,
+        "linearizedBaseContracts": [
+          2030
+        ],
+        "name": "ESOPMigration",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 2012,
+              "nodeType": "Block",
+              "src": "103:61:4",
+              "statements": [
+                {
+                  "condition": {
+                    "argumentTypes": null,
+                    "commonType": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    },
+                    "id": 2008,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 2004,
+                        "name": "msg",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 3715,
+                        "src": "113:3:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_magic_message",
+                          "typeString": "msg"
+                        }
+                      },
+                      "id": 2005,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "sender",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "113:10:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "!=",
+                    "rightExpression": {
+                      "argumentTypes": null,
+                      "arguments": [],
+                      "expression": {
+                        "argumentTypes": [],
+                        "id": 2006,
+                        "name": "getOldESOP",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 2018,
+                        "src": "127:10:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_internal_view$__$returns$_t_address_$",
+                          "typeString": "function () view returns (address)"
+                        }
+                      },
+                      "id": 2007,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "127:12:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "113:26:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "falseBody": null,
+                  "id": 2010,
+                  "nodeType": "IfStatement",
+                  "src": "109:43:4",
+                  "trueBody": {
+                    "id": 2009,
+                    "nodeType": "Throw",
+                    "src": "147:5:4"
+                  }
+                },
+                {
+                  "id": 2011,
+                  "nodeType": "PlaceholderStatement",
+                  "src": "158:1:4"
+                }
+              ]
+            },
+            "id": 2013,
+            "name": "onlyOldESOP",
+            "nodeType": "ModifierDefinition",
+            "parameters": {
+              "id": 2003,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "100:2:4"
+            },
+            "src": "80:84:4",
+            "visibility": "internal"
+          },
+          {
+            "body": null,
+            "id": 2018,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "getOldESOP",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2014,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "266:2:4"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 2017,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2016,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2018,
+                  "src": "294:7:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2015,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "294:7:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "293:9:4"
+            },
+            "scope": 2030,
+            "src": "247:56:4",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": null,
+            "id": 2029,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [
+              {
+                "arguments": [],
+                "id": 2027,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 2026,
+                  "name": "onlyOldESOP",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 2013,
+                  "src": "709:11:4",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "709:11:4"
+              }
+            ],
+            "name": "migrate",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2025,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2020,
+                  "name": "employee",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2029,
+                  "src": "654:16:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2019,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "654:7:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2022,
+                  "name": "poolOptions",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2029,
+                  "src": "672:16:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2021,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "672:4:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2024,
+                  "name": "extraOptions",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2029,
+                  "src": "690:17:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2023,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "690:4:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "653:55:4"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 2028,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "727:0:4"
+            },
+            "scope": 2030,
+            "src": "637:91:4",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 2031,
+        "src": "53:677:4"
+      }
+    ],
+    "src": "0:731:4"
+  },
+  "legacyAST": {
+    "absolutePath": "/home/ethnode/parity/ESOP/contracts/ESOPMigration.sol",
+    "exportedSymbols": {
+      "ESOPMigration": [
+        2030
+      ]
+    },
+    "id": 2031,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 2001,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".11"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:4"
+      },
+      {
+        "absolutePath": "/home/ethnode/parity/ESOP/contracts/ESOPTypes.sol",
+        "file": "./ESOPTypes.sol",
+        "id": 2002,
+        "nodeType": "ImportDirective",
+        "scope": 2031,
+        "sourceUnit": 2082,
+        "src": "25:25:4",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 2030,
+        "linearizedBaseContracts": [
+          2030
+        ],
+        "name": "ESOPMigration",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 2012,
+              "nodeType": "Block",
+              "src": "103:61:4",
+              "statements": [
+                {
+                  "condition": {
+                    "argumentTypes": null,
+                    "commonType": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    },
+                    "id": 2008,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 2004,
+                        "name": "msg",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 3715,
+                        "src": "113:3:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_magic_message",
+                          "typeString": "msg"
+                        }
+                      },
+                      "id": 2005,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "sender",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "113:10:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "!=",
+                    "rightExpression": {
+                      "argumentTypes": null,
+                      "arguments": [],
+                      "expression": {
+                        "argumentTypes": [],
+                        "id": 2006,
+                        "name": "getOldESOP",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 2018,
+                        "src": "127:10:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_internal_view$__$returns$_t_address_$",
+                          "typeString": "function () view returns (address)"
+                        }
+                      },
+                      "id": 2007,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "127:12:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "113:26:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "falseBody": null,
+                  "id": 2010,
+                  "nodeType": "IfStatement",
+                  "src": "109:43:4",
+                  "trueBody": {
+                    "id": 2009,
+                    "nodeType": "Throw",
+                    "src": "147:5:4"
+                  }
+                },
+                {
+                  "id": 2011,
+                  "nodeType": "PlaceholderStatement",
+                  "src": "158:1:4"
+                }
+              ]
+            },
+            "id": 2013,
+            "name": "onlyOldESOP",
+            "nodeType": "ModifierDefinition",
+            "parameters": {
+              "id": 2003,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "100:2:4"
+            },
+            "src": "80:84:4",
+            "visibility": "internal"
+          },
+          {
+            "body": null,
+            "id": 2018,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "getOldESOP",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2014,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "266:2:4"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 2017,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2016,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2018,
+                  "src": "294:7:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2015,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "294:7:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "293:9:4"
+            },
+            "scope": 2030,
+            "src": "247:56:4",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": null,
+            "id": 2029,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [
+              {
+                "arguments": [],
+                "id": 2027,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 2026,
+                  "name": "onlyOldESOP",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 2013,
+                  "src": "709:11:4",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "709:11:4"
+              }
+            ],
+            "name": "migrate",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2025,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2020,
+                  "name": "employee",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2029,
+                  "src": "654:16:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2019,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "654:7:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2022,
+                  "name": "poolOptions",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2029,
+                  "src": "672:16:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2021,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "672:4:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2024,
+                  "name": "extraOptions",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2029,
+                  "src": "690:17:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2023,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "690:4:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "653:55:4"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 2028,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "727:0:4"
+            },
+            "scope": 2030,
+            "src": "637:91:4",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 2031,
+        "src": "53:677:4"
+      }
+    ],
+    "src": "0:731:4"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.19+commit.c4cbbb05.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "2.0.0",
+  "updatedAt": "2018-03-18T07:17:38.616Z"
+}

@@ -1,0 +1,1515 @@
+{
+  "contractName": "CodeUpdateable",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "codeUpdateState",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "beginCodeUpdate",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "cancelCodeUpdate",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "completeCodeUpdate",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x6060604052336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506104ea806100536000396000f300606060405260043610610078576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806379a958c21461007d5780638da5cb5b146100b4578063950dff2014610109578063ba3f41da1461011e578063c85c75b214610133578063f2fde38b14610148575b600080fd5b341561008857600080fd5b610090610181565b604051808260018111156100a057fe5b60ff16815260200191505060405180910390f35b34156100bf57600080fd5b6100c7610194565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b341561011457600080fd5b61011c6101b9565b005b341561012957600080fd5b61013161026c565b005b341561013e57600080fd5b610146610321565b005b341561015357600080fd5b61017f600480803573ffffffffffffffffffffffffffffffffffffffff169060200190919050506103e9565b005b600060149054906101000a900460ff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561021457600080fd5b60018081111561022057fe5b600060149054906101000a900460ff16600181111561023b57fe5b14151561024757600080fd5b60008060146101000a81548160ff0219169083600181111561026557fe5b0217905550565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415156102c757600080fd5b600060018111156102d457fe5b600060149054906101000a900460ff1660018111156102ef57fe5b1415156102fb57600080fd5b6001600060146101000a81548160ff0219169083600181111561031a57fe5b0217905550565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561037c57600080fd5b60018081111561038857fe5b600060149054906101000a900460ff1660018111156103a357fe5b1415156103af57600080fd5b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16ff5b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561044457600080fd5b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff161415156104bb57806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055505b505600a165627a7a72305820bd41ff63794c0e3aba89d6fd387311fe52b03ea9eccf8d07974f1dd0623e0d4e0029",
+  "deployedBytecode": "0x606060405260043610610078576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806379a958c21461007d5780638da5cb5b146100b4578063950dff2014610109578063ba3f41da1461011e578063c85c75b214610133578063f2fde38b14610148575b600080fd5b341561008857600080fd5b610090610181565b604051808260018111156100a057fe5b60ff16815260200191505060405180910390f35b34156100bf57600080fd5b6100c7610194565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b341561011457600080fd5b61011c6101b9565b005b341561012957600080fd5b61013161026c565b005b341561013e57600080fd5b610146610321565b005b341561015357600080fd5b61017f600480803573ffffffffffffffffffffffffffffffffffffffff169060200190919050506103e9565b005b600060149054906101000a900460ff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561021457600080fd5b60018081111561022057fe5b600060149054906101000a900460ff16600181111561023b57fe5b14151561024757600080fd5b60008060146101000a81548160ff0219169083600181111561026557fe5b0217905550565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415156102c757600080fd5b600060018111156102d457fe5b600060149054906101000a900460ff1660018111156102ef57fe5b1415156102fb57600080fd5b6001600060146101000a81548160ff0219169083600181111561031a57fe5b0217905550565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561037c57600080fd5b60018081111561038857fe5b600060149054906101000a900460ff1660018111156103a357fe5b1415156103af57600080fd5b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16ff5b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561044457600080fd5b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff161415156104bb57806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055505b505600a165627a7a72305820bd41ff63794c0e3aba89d6fd387311fe52b03ea9eccf8d07974f1dd0623e0d4e0029",
+  "sourceMap": "49:818:1:-;;;155:10:11;147:5;;:18;;;;;;;;;;;;;;;;;;49:818:1;;;;;;",
+  "deployedSourceMap": "49:818:1:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;235:38;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;97:20:11;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;647:118:1;;;;;;;;;;;;;;521:120;;;;;;;;;;;;;;771:94;;;;;;;;;;;;;;253:116:11;;;;;;;;;;;;;;;;;;;;;;;;;;;;235:38:1;;;;;;;;;;;;;:::o;97:20:11:-;;;;;;;;;;;;;:::o;647:118:1:-;219:5:11;;;;;;;;;;;205:19;;:10;:19;;;;201:36;;;232:5;;;201:36;455:29:1;436:48;;;;;;;;:15;;;;;;;;;;;:48;;;;;;;;;;432:67;;;494:5;;;432:67;731:27;713:15;;:45;;;;;;;;;;;;;;;;;;;;;;;;647:118::o;521:120::-;219:5:11;;;;;;;;;;;205:19;;:10;:19;;;;201:36;;;232:5;;;201:36;336:27:1;317:46;;;;;;;;:15;;;;;;;;;;;:46;;;;;;;;;;313:65;;;373:5;;;313:65;605:29;587:15;;:47;;;;;;;;;;;;;;;;;;;;;;;;521:120::o;771:94::-;219:5:11;;;;;;;;;;;205:19;;:10;:19;;;;201:36;;;232:5;;;201:36;455:29:1;436:48;;;;;;;;:15;;;;;;;;;;;:48;;;;;;;;;;432:67;;;494:5;;;432:67;852:5;;;;;;;;;;;839:19;;;253:116:11;219:5;;;;;;;;;;;205:19;;:10;:19;;;;201:36;;;232:5;;;201:36;338:1;318:22;;:8;:22;;;;314:50;;;356:8;348:5;;:16;;;;;;;;;;;;;;;;;;314:50;253:116;:::o",
+  "source": "pragma solidity ^0.4.11;\nimport \"./Types.sol\";\n\n\ncontract CodeUpdateable is Ownable {\n    // allows to stop operations and migrate data to different contract\n    enum CodeUpdateState { CurrentCode, OngoingUpdate /*, CodeUpdated*/}\n    CodeUpdateState public codeUpdateState;\n\n    modifier isCurrentCode() {\n      if (codeUpdateState != CodeUpdateState.CurrentCode)\n        throw;\n      _;\n    }\n\n    modifier inCodeUpdate() {\n      if (codeUpdateState != CodeUpdateState.OngoingUpdate)\n        throw;\n      _;\n    }\n\n    function beginCodeUpdate() public onlyOwner isCurrentCode {\n      codeUpdateState = CodeUpdateState.OngoingUpdate;\n    }\n\n    function cancelCodeUpdate() public onlyOwner inCodeUpdate {\n      codeUpdateState = CodeUpdateState.CurrentCode;\n    }\n\n    function completeCodeUpdate() public onlyOwner inCodeUpdate {\n      selfdestruct(owner);\n    }\n}\n",
+  "sourcePath": "/home/ethnode/parity/ESOP/contracts/CodeUpdateable.sol",
+  "ast": {
+    "absolutePath": "/home/ethnode/parity/ESOP/contracts/CodeUpdateable.sol",
+    "exportedSymbols": {
+      "CodeUpdateable": [
+        107
+      ]
+    },
+    "id": 108,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 40,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".11"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:1"
+      },
+      {
+        "absolutePath": "/home/ethnode/parity/ESOP/contracts/Types.sol",
+        "file": "./Types.sol",
+        "id": 41,
+        "nodeType": "ImportDirective",
+        "scope": 108,
+        "sourceUnit": 3704,
+        "src": "25:21:1",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": [],
+            "baseName": {
+              "contractScope": null,
+              "id": 42,
+              "name": "Ownable",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 3546,
+              "src": "76:7:1",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_Ownable_$3546",
+                "typeString": "contract Ownable"
+              }
+            },
+            "id": 43,
+            "nodeType": "InheritanceSpecifier",
+            "src": "76:7:1"
+          }
+        ],
+        "contractDependencies": [
+          3546
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 107,
+        "linearizedBaseContracts": [
+          107,
+          3546
+        ],
+        "name": "CodeUpdateable",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "CodeUpdateable.CodeUpdateState",
+            "id": 46,
+            "members": [
+              {
+                "id": 44,
+                "name": "CurrentCode",
+                "nodeType": "EnumValue",
+                "src": "185:11:1"
+              },
+              {
+                "id": 45,
+                "name": "OngoingUpdate",
+                "nodeType": "EnumValue",
+                "src": "198:13:1"
+              }
+            ],
+            "name": "CodeUpdateState",
+            "nodeType": "EnumDefinition",
+            "src": "162:68:1"
+          },
+          {
+            "constant": false,
+            "id": 48,
+            "name": "codeUpdateState",
+            "nodeType": "VariableDeclaration",
+            "scope": 107,
+            "src": "235:38:1",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_enum$_CodeUpdateState_$46",
+              "typeString": "enum CodeUpdateable.CodeUpdateState"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 47,
+              "name": "CodeUpdateState",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 46,
+              "src": "235:15:1",
+              "typeDescriptions": {
+                "typeIdentifier": "t_enum$_CodeUpdateState_$46",
+                "typeString": "enum CodeUpdateable.CodeUpdateState"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 57,
+              "nodeType": "Block",
+              "src": "305:89:1",
+              "statements": [
+                {
+                  "condition": {
+                    "argumentTypes": null,
+                    "commonType": {
+                      "typeIdentifier": "t_enum$_CodeUpdateState_$46",
+                      "typeString": "enum CodeUpdateable.CodeUpdateState"
+                    },
+                    "id": 53,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "argumentTypes": null,
+                      "id": 50,
+                      "name": "codeUpdateState",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 48,
+                      "src": "317:15:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_enum$_CodeUpdateState_$46",
+                        "typeString": "enum CodeUpdateable.CodeUpdateState"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "!=",
+                    "rightExpression": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 51,
+                        "name": "CodeUpdateState",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 46,
+                        "src": "336:15:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_enum$_CodeUpdateState_$46_$",
+                          "typeString": "type(enum CodeUpdateable.CodeUpdateState)"
+                        }
+                      },
+                      "id": 52,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "lValueRequested": false,
+                      "memberName": "CurrentCode",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "336:27:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_enum$_CodeUpdateState_$46",
+                        "typeString": "enum CodeUpdateable.CodeUpdateState"
+                      }
+                    },
+                    "src": "317:46:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "falseBody": null,
+                  "id": 55,
+                  "nodeType": "IfStatement",
+                  "src": "313:65:1",
+                  "trueBody": {
+                    "id": 54,
+                    "nodeType": "Throw",
+                    "src": "373:5:1"
+                  }
+                },
+                {
+                  "id": 56,
+                  "nodeType": "PlaceholderStatement",
+                  "src": "386:1:1"
+                }
+              ]
+            },
+            "id": 58,
+            "name": "isCurrentCode",
+            "nodeType": "ModifierDefinition",
+            "parameters": {
+              "id": 49,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "302:2:1"
+            },
+            "src": "280:114:1",
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 67,
+              "nodeType": "Block",
+              "src": "424:91:1",
+              "statements": [
+                {
+                  "condition": {
+                    "argumentTypes": null,
+                    "commonType": {
+                      "typeIdentifier": "t_enum$_CodeUpdateState_$46",
+                      "typeString": "enum CodeUpdateable.CodeUpdateState"
+                    },
+                    "id": 63,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "argumentTypes": null,
+                      "id": 60,
+                      "name": "codeUpdateState",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 48,
+                      "src": "436:15:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_enum$_CodeUpdateState_$46",
+                        "typeString": "enum CodeUpdateable.CodeUpdateState"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "!=",
+                    "rightExpression": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 61,
+                        "name": "CodeUpdateState",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 46,
+                        "src": "455:15:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_enum$_CodeUpdateState_$46_$",
+                          "typeString": "type(enum CodeUpdateable.CodeUpdateState)"
+                        }
+                      },
+                      "id": 62,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "lValueRequested": false,
+                      "memberName": "OngoingUpdate",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "455:29:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_enum$_CodeUpdateState_$46",
+                        "typeString": "enum CodeUpdateable.CodeUpdateState"
+                      }
+                    },
+                    "src": "436:48:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "falseBody": null,
+                  "id": 65,
+                  "nodeType": "IfStatement",
+                  "src": "432:67:1",
+                  "trueBody": {
+                    "id": 64,
+                    "nodeType": "Throw",
+                    "src": "494:5:1"
+                  }
+                },
+                {
+                  "id": 66,
+                  "nodeType": "PlaceholderStatement",
+                  "src": "507:1:1"
+                }
+              ]
+            },
+            "id": 68,
+            "name": "inCodeUpdate",
+            "nodeType": "ModifierDefinition",
+            "parameters": {
+              "id": 59,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "421:2:1"
+            },
+            "src": "400:115:1",
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 80,
+              "nodeType": "Block",
+              "src": "579:62:1",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 78,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 75,
+                      "name": "codeUpdateState",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 48,
+                      "src": "587:15:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_enum$_CodeUpdateState_$46",
+                        "typeString": "enum CodeUpdateable.CodeUpdateState"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 76,
+                        "name": "CodeUpdateState",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 46,
+                        "src": "605:15:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_enum$_CodeUpdateState_$46_$",
+                          "typeString": "type(enum CodeUpdateable.CodeUpdateState)"
+                        }
+                      },
+                      "id": 77,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "lValueRequested": false,
+                      "memberName": "OngoingUpdate",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "605:29:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_enum$_CodeUpdateState_$46",
+                        "typeString": "enum CodeUpdateable.CodeUpdateState"
+                      }
+                    },
+                    "src": "587:47:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_enum$_CodeUpdateState_$46",
+                      "typeString": "enum CodeUpdateable.CodeUpdateState"
+                    }
+                  },
+                  "id": 79,
+                  "nodeType": "ExpressionStatement",
+                  "src": "587:47:1"
+                }
+              ]
+            },
+            "id": 81,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [
+              {
+                "arguments": [],
+                "id": 71,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 70,
+                  "name": "onlyOwner",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 3527,
+                  "src": "555:9:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "555:9:1"
+              },
+              {
+                "arguments": [],
+                "id": 73,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 72,
+                  "name": "isCurrentCode",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 58,
+                  "src": "565:13:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "565:13:1"
+              }
+            ],
+            "name": "beginCodeUpdate",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 69,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "545:2:1"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 74,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "579:0:1"
+            },
+            "scope": 107,
+            "src": "521:120:1",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 93,
+              "nodeType": "Block",
+              "src": "705:60:1",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 91,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 88,
+                      "name": "codeUpdateState",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 48,
+                      "src": "713:15:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_enum$_CodeUpdateState_$46",
+                        "typeString": "enum CodeUpdateable.CodeUpdateState"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 89,
+                        "name": "CodeUpdateState",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 46,
+                        "src": "731:15:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_enum$_CodeUpdateState_$46_$",
+                          "typeString": "type(enum CodeUpdateable.CodeUpdateState)"
+                        }
+                      },
+                      "id": 90,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "lValueRequested": false,
+                      "memberName": "CurrentCode",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "731:27:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_enum$_CodeUpdateState_$46",
+                        "typeString": "enum CodeUpdateable.CodeUpdateState"
+                      }
+                    },
+                    "src": "713:45:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_enum$_CodeUpdateState_$46",
+                      "typeString": "enum CodeUpdateable.CodeUpdateState"
+                    }
+                  },
+                  "id": 92,
+                  "nodeType": "ExpressionStatement",
+                  "src": "713:45:1"
+                }
+              ]
+            },
+            "id": 94,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [
+              {
+                "arguments": [],
+                "id": 84,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 83,
+                  "name": "onlyOwner",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 3527,
+                  "src": "682:9:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "682:9:1"
+              },
+              {
+                "arguments": [],
+                "id": 86,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 85,
+                  "name": "inCodeUpdate",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 68,
+                  "src": "692:12:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "692:12:1"
+              }
+            ],
+            "name": "cancelCodeUpdate",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 82,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "672:2:1"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 87,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "705:0:1"
+            },
+            "scope": 107,
+            "src": "647:118:1",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 105,
+              "nodeType": "Block",
+              "src": "831:34:1",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 102,
+                        "name": "owner",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 3508,
+                        "src": "852:5:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "id": 101,
+                      "name": "selfdestruct",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 3721,
+                      "src": "839:12:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_selfdestruct_nonpayable$_t_address_$returns$__$",
+                        "typeString": "function (address)"
+                      }
+                    },
+                    "id": 103,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "839:19:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 104,
+                  "nodeType": "ExpressionStatement",
+                  "src": "839:19:1"
+                }
+              ]
+            },
+            "id": 106,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [
+              {
+                "arguments": [],
+                "id": 97,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 96,
+                  "name": "onlyOwner",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 3527,
+                  "src": "808:9:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "808:9:1"
+              },
+              {
+                "arguments": [],
+                "id": 99,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 98,
+                  "name": "inCodeUpdate",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 68,
+                  "src": "818:12:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "818:12:1"
+              }
+            ],
+            "name": "completeCodeUpdate",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 95,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "798:2:1"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 100,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "831:0:1"
+            },
+            "scope": 107,
+            "src": "771:94:1",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 108,
+        "src": "49:818:1"
+      }
+    ],
+    "src": "0:868:1"
+  },
+  "legacyAST": {
+    "absolutePath": "/home/ethnode/parity/ESOP/contracts/CodeUpdateable.sol",
+    "exportedSymbols": {
+      "CodeUpdateable": [
+        107
+      ]
+    },
+    "id": 108,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 40,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".11"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:1"
+      },
+      {
+        "absolutePath": "/home/ethnode/parity/ESOP/contracts/Types.sol",
+        "file": "./Types.sol",
+        "id": 41,
+        "nodeType": "ImportDirective",
+        "scope": 108,
+        "sourceUnit": 3704,
+        "src": "25:21:1",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": [],
+            "baseName": {
+              "contractScope": null,
+              "id": 42,
+              "name": "Ownable",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 3546,
+              "src": "76:7:1",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_Ownable_$3546",
+                "typeString": "contract Ownable"
+              }
+            },
+            "id": 43,
+            "nodeType": "InheritanceSpecifier",
+            "src": "76:7:1"
+          }
+        ],
+        "contractDependencies": [
+          3546
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 107,
+        "linearizedBaseContracts": [
+          107,
+          3546
+        ],
+        "name": "CodeUpdateable",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "CodeUpdateable.CodeUpdateState",
+            "id": 46,
+            "members": [
+              {
+                "id": 44,
+                "name": "CurrentCode",
+                "nodeType": "EnumValue",
+                "src": "185:11:1"
+              },
+              {
+                "id": 45,
+                "name": "OngoingUpdate",
+                "nodeType": "EnumValue",
+                "src": "198:13:1"
+              }
+            ],
+            "name": "CodeUpdateState",
+            "nodeType": "EnumDefinition",
+            "src": "162:68:1"
+          },
+          {
+            "constant": false,
+            "id": 48,
+            "name": "codeUpdateState",
+            "nodeType": "VariableDeclaration",
+            "scope": 107,
+            "src": "235:38:1",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_enum$_CodeUpdateState_$46",
+              "typeString": "enum CodeUpdateable.CodeUpdateState"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 47,
+              "name": "CodeUpdateState",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 46,
+              "src": "235:15:1",
+              "typeDescriptions": {
+                "typeIdentifier": "t_enum$_CodeUpdateState_$46",
+                "typeString": "enum CodeUpdateable.CodeUpdateState"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 57,
+              "nodeType": "Block",
+              "src": "305:89:1",
+              "statements": [
+                {
+                  "condition": {
+                    "argumentTypes": null,
+                    "commonType": {
+                      "typeIdentifier": "t_enum$_CodeUpdateState_$46",
+                      "typeString": "enum CodeUpdateable.CodeUpdateState"
+                    },
+                    "id": 53,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "argumentTypes": null,
+                      "id": 50,
+                      "name": "codeUpdateState",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 48,
+                      "src": "317:15:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_enum$_CodeUpdateState_$46",
+                        "typeString": "enum CodeUpdateable.CodeUpdateState"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "!=",
+                    "rightExpression": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 51,
+                        "name": "CodeUpdateState",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 46,
+                        "src": "336:15:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_enum$_CodeUpdateState_$46_$",
+                          "typeString": "type(enum CodeUpdateable.CodeUpdateState)"
+                        }
+                      },
+                      "id": 52,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "lValueRequested": false,
+                      "memberName": "CurrentCode",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "336:27:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_enum$_CodeUpdateState_$46",
+                        "typeString": "enum CodeUpdateable.CodeUpdateState"
+                      }
+                    },
+                    "src": "317:46:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "falseBody": null,
+                  "id": 55,
+                  "nodeType": "IfStatement",
+                  "src": "313:65:1",
+                  "trueBody": {
+                    "id": 54,
+                    "nodeType": "Throw",
+                    "src": "373:5:1"
+                  }
+                },
+                {
+                  "id": 56,
+                  "nodeType": "PlaceholderStatement",
+                  "src": "386:1:1"
+                }
+              ]
+            },
+            "id": 58,
+            "name": "isCurrentCode",
+            "nodeType": "ModifierDefinition",
+            "parameters": {
+              "id": 49,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "302:2:1"
+            },
+            "src": "280:114:1",
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 67,
+              "nodeType": "Block",
+              "src": "424:91:1",
+              "statements": [
+                {
+                  "condition": {
+                    "argumentTypes": null,
+                    "commonType": {
+                      "typeIdentifier": "t_enum$_CodeUpdateState_$46",
+                      "typeString": "enum CodeUpdateable.CodeUpdateState"
+                    },
+                    "id": 63,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "argumentTypes": null,
+                      "id": 60,
+                      "name": "codeUpdateState",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 48,
+                      "src": "436:15:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_enum$_CodeUpdateState_$46",
+                        "typeString": "enum CodeUpdateable.CodeUpdateState"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "!=",
+                    "rightExpression": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 61,
+                        "name": "CodeUpdateState",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 46,
+                        "src": "455:15:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_enum$_CodeUpdateState_$46_$",
+                          "typeString": "type(enum CodeUpdateable.CodeUpdateState)"
+                        }
+                      },
+                      "id": 62,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "lValueRequested": false,
+                      "memberName": "OngoingUpdate",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "455:29:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_enum$_CodeUpdateState_$46",
+                        "typeString": "enum CodeUpdateable.CodeUpdateState"
+                      }
+                    },
+                    "src": "436:48:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "falseBody": null,
+                  "id": 65,
+                  "nodeType": "IfStatement",
+                  "src": "432:67:1",
+                  "trueBody": {
+                    "id": 64,
+                    "nodeType": "Throw",
+                    "src": "494:5:1"
+                  }
+                },
+                {
+                  "id": 66,
+                  "nodeType": "PlaceholderStatement",
+                  "src": "507:1:1"
+                }
+              ]
+            },
+            "id": 68,
+            "name": "inCodeUpdate",
+            "nodeType": "ModifierDefinition",
+            "parameters": {
+              "id": 59,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "421:2:1"
+            },
+            "src": "400:115:1",
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 80,
+              "nodeType": "Block",
+              "src": "579:62:1",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 78,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 75,
+                      "name": "codeUpdateState",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 48,
+                      "src": "587:15:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_enum$_CodeUpdateState_$46",
+                        "typeString": "enum CodeUpdateable.CodeUpdateState"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 76,
+                        "name": "CodeUpdateState",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 46,
+                        "src": "605:15:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_enum$_CodeUpdateState_$46_$",
+                          "typeString": "type(enum CodeUpdateable.CodeUpdateState)"
+                        }
+                      },
+                      "id": 77,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "lValueRequested": false,
+                      "memberName": "OngoingUpdate",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "605:29:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_enum$_CodeUpdateState_$46",
+                        "typeString": "enum CodeUpdateable.CodeUpdateState"
+                      }
+                    },
+                    "src": "587:47:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_enum$_CodeUpdateState_$46",
+                      "typeString": "enum CodeUpdateable.CodeUpdateState"
+                    }
+                  },
+                  "id": 79,
+                  "nodeType": "ExpressionStatement",
+                  "src": "587:47:1"
+                }
+              ]
+            },
+            "id": 81,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [
+              {
+                "arguments": [],
+                "id": 71,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 70,
+                  "name": "onlyOwner",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 3527,
+                  "src": "555:9:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "555:9:1"
+              },
+              {
+                "arguments": [],
+                "id": 73,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 72,
+                  "name": "isCurrentCode",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 58,
+                  "src": "565:13:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "565:13:1"
+              }
+            ],
+            "name": "beginCodeUpdate",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 69,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "545:2:1"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 74,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "579:0:1"
+            },
+            "scope": 107,
+            "src": "521:120:1",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 93,
+              "nodeType": "Block",
+              "src": "705:60:1",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 91,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 88,
+                      "name": "codeUpdateState",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 48,
+                      "src": "713:15:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_enum$_CodeUpdateState_$46",
+                        "typeString": "enum CodeUpdateable.CodeUpdateState"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 89,
+                        "name": "CodeUpdateState",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 46,
+                        "src": "731:15:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_enum$_CodeUpdateState_$46_$",
+                          "typeString": "type(enum CodeUpdateable.CodeUpdateState)"
+                        }
+                      },
+                      "id": 90,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "lValueRequested": false,
+                      "memberName": "CurrentCode",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "731:27:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_enum$_CodeUpdateState_$46",
+                        "typeString": "enum CodeUpdateable.CodeUpdateState"
+                      }
+                    },
+                    "src": "713:45:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_enum$_CodeUpdateState_$46",
+                      "typeString": "enum CodeUpdateable.CodeUpdateState"
+                    }
+                  },
+                  "id": 92,
+                  "nodeType": "ExpressionStatement",
+                  "src": "713:45:1"
+                }
+              ]
+            },
+            "id": 94,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [
+              {
+                "arguments": [],
+                "id": 84,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 83,
+                  "name": "onlyOwner",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 3527,
+                  "src": "682:9:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "682:9:1"
+              },
+              {
+                "arguments": [],
+                "id": 86,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 85,
+                  "name": "inCodeUpdate",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 68,
+                  "src": "692:12:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "692:12:1"
+              }
+            ],
+            "name": "cancelCodeUpdate",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 82,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "672:2:1"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 87,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "705:0:1"
+            },
+            "scope": 107,
+            "src": "647:118:1",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 105,
+              "nodeType": "Block",
+              "src": "831:34:1",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 102,
+                        "name": "owner",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 3508,
+                        "src": "852:5:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "id": 101,
+                      "name": "selfdestruct",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 3721,
+                      "src": "839:12:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_selfdestruct_nonpayable$_t_address_$returns$__$",
+                        "typeString": "function (address)"
+                      }
+                    },
+                    "id": 103,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "839:19:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 104,
+                  "nodeType": "ExpressionStatement",
+                  "src": "839:19:1"
+                }
+              ]
+            },
+            "id": 106,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [
+              {
+                "arguments": [],
+                "id": 97,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 96,
+                  "name": "onlyOwner",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 3527,
+                  "src": "808:9:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "808:9:1"
+              },
+              {
+                "arguments": [],
+                "id": 99,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 98,
+                  "name": "inCodeUpdate",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 68,
+                  "src": "818:12:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "818:12:1"
+              }
+            ],
+            "name": "completeCodeUpdate",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 95,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "798:2:1"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 100,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "831:0:1"
+            },
+            "scope": 107,
+            "src": "771:94:1",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 108,
+        "src": "49:818:1"
+      }
+    ],
+    "src": "0:868:1"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.19+commit.c4cbbb05.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "2.0.0",
+  "updatedAt": "2018-03-18T07:17:38.497Z"
+}

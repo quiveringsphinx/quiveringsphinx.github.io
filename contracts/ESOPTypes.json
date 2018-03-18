@@ -1,0 +1,1265 @@
+{
+  "contractName": "ESOPTypes",
+  "abi": [],
+  "bytecode": "0x60606040523415600e57600080fd5b603580601b6000396000f3006060604052600080fd00a165627a7a7230582072c4ed23d36f2145b48a4ed86b0561605e4c854b1675de87e74f1bfa47ce88d40029",
+  "deployedBytecode": "0x6060604052600080fd00a165627a7a7230582072c4ed23d36f2145b48a4ed86b0561605e4c854b1675de87e74f1bfa47ce88d40029",
+  "sourceMap": "49:1947:5:-;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "49:1947:5:-;;;;;",
+  "source": "pragma solidity ^0.4.11;\nimport \"./Types.sol\";\n\n\ncontract ESOPTypes {\n  // enums are numbered starting from 0. NotSet is used to check for non existing mapping\n  enum EmployeeState { NotSet, WaitingForSignature, Employed, Terminated, OptionsExercised }\n  // please note that 32 bit unsigned int is used to represent UNIX time which is enough to represent dates until Sun, 07 Feb 2106 06:28:15 GMT\n  // storage access is optimized so struct layout is important\n  struct Employee {\n      // when vesting starts\n      uint32 issueDate;\n      // wait for employee signature until that time\n      uint32 timeToSign;\n      // date when employee was terminated, 0 for not terminated\n      uint32 terminatedAt;\n      // when fade out starts, 0 for not set, initally == terminatedAt\n      // used only when calculating options returned to pool\n      uint32 fadeoutStarts;\n      // poolOptions employee gets (exit bonus not included)\n      uint32 poolOptions;\n      // extra options employee gets (neufund will not this option)\n      uint32 extraOptions;\n      // time at which employee got suspended, 0 - not suspended\n      uint32 suspendedAt;\n      // what is employee current status, takes 8 bit in storage\n      EmployeeState state;\n      // index in iterable mapping\n      uint16 idx;\n      // reserve until full 256 bit word\n      //uint24 reserved;\n  }\n\n  function serializeEmployee(Employee memory employee)\n    internal\n    constant\n    returns(uint[9] emp)\n  {\n      // guess what: struct layout in memory is aligned to word (256 bits)\n      // struct in storage is byte aligned\n      assembly {\n        // return memory aligned struct as array of words\n        // I just wonder when 'employee' memory is deallocated\n        // answer: memory is not deallocated until transaction ends\n        emp := employee\n      }\n  }\n\n  function deserializeEmployee(uint[9] serializedEmployee)\n    internal\n    constant\n    returns (Employee memory emp)\n  {\n      assembly { emp := serializedEmployee }\n  }\n}\n",
+  "sourcePath": "/home/ethnode/parity/ESOP/contracts/ESOPTypes.sol",
+  "ast": {
+    "absolutePath": "/home/ethnode/parity/ESOP/contracts/ESOPTypes.sol",
+    "exportedSymbols": {
+      "ESOPTypes": [
+        2081
+      ]
+    },
+    "id": 2082,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 2032,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".11"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:5"
+      },
+      {
+        "absolutePath": "/home/ethnode/parity/ESOP/contracts/Types.sol",
+        "file": "./Types.sol",
+        "id": 2033,
+        "nodeType": "ImportDirective",
+        "scope": 2082,
+        "sourceUnit": 3704,
+        "src": "25:21:5",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 2081,
+        "linearizedBaseContracts": [
+          2081
+        ],
+        "name": "ESOPTypes",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "ESOPTypes.EmployeeState",
+            "id": 2039,
+            "members": [
+              {
+                "id": 2034,
+                "name": "NotSet",
+                "nodeType": "EnumValue",
+                "src": "183:6:5"
+              },
+              {
+                "id": 2035,
+                "name": "WaitingForSignature",
+                "nodeType": "EnumValue",
+                "src": "191:19:5"
+              },
+              {
+                "id": 2036,
+                "name": "Employed",
+                "nodeType": "EnumValue",
+                "src": "212:8:5"
+              },
+              {
+                "id": 2037,
+                "name": "Terminated",
+                "nodeType": "EnumValue",
+                "src": "222:10:5"
+              },
+              {
+                "id": 2038,
+                "name": "OptionsExercised",
+                "nodeType": "EnumValue",
+                "src": "234:16:5"
+              }
+            ],
+            "name": "EmployeeState",
+            "nodeType": "EnumDefinition",
+            "src": "162:90:5"
+          },
+          {
+            "canonicalName": "ESOPTypes.Employee",
+            "id": 2058,
+            "members": [
+              {
+                "constant": false,
+                "id": 2041,
+                "name": "issueDate",
+                "nodeType": "VariableDeclaration",
+                "scope": 2058,
+                "src": "515:16:5",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint32",
+                  "typeString": "uint32"
+                },
+                "typeName": {
+                  "id": 2040,
+                  "name": "uint32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "515:6:5",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 2043,
+                "name": "timeToSign",
+                "nodeType": "VariableDeclaration",
+                "scope": 2058,
+                "src": "592:17:5",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint32",
+                  "typeString": "uint32"
+                },
+                "typeName": {
+                  "id": 2042,
+                  "name": "uint32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "592:6:5",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 2045,
+                "name": "terminatedAt",
+                "nodeType": "VariableDeclaration",
+                "scope": 2058,
+                "src": "682:19:5",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint32",
+                  "typeString": "uint32"
+                },
+                "typeName": {
+                  "id": 2044,
+                  "name": "uint32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "682:6:5",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 2047,
+                "name": "fadeoutStarts",
+                "nodeType": "VariableDeclaration",
+                "scope": 2058,
+                "src": "841:20:5",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint32",
+                  "typeString": "uint32"
+                },
+                "typeName": {
+                  "id": 2046,
+                  "name": "uint32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "841:6:5",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 2049,
+                "name": "poolOptions",
+                "nodeType": "VariableDeclaration",
+                "scope": 2058,
+                "src": "930:18:5",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint32",
+                  "typeString": "uint32"
+                },
+                "typeName": {
+                  "id": 2048,
+                  "name": "uint32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "930:6:5",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 2051,
+                "name": "extraOptions",
+                "nodeType": "VariableDeclaration",
+                "scope": 2058,
+                "src": "1024:19:5",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint32",
+                  "typeString": "uint32"
+                },
+                "typeName": {
+                  "id": 2050,
+                  "name": "uint32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1024:6:5",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 2053,
+                "name": "suspendedAt",
+                "nodeType": "VariableDeclaration",
+                "scope": 2058,
+                "src": "1116:18:5",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint32",
+                  "typeString": "uint32"
+                },
+                "typeName": {
+                  "id": 2052,
+                  "name": "uint32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1116:6:5",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 2055,
+                "name": "state",
+                "nodeType": "VariableDeclaration",
+                "scope": 2058,
+                "src": "1207:19:5",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_enum$_EmployeeState_$2039",
+                  "typeString": "enum ESOPTypes.EmployeeState"
+                },
+                "typeName": {
+                  "contractScope": null,
+                  "id": 2054,
+                  "name": "EmployeeState",
+                  "nodeType": "UserDefinedTypeName",
+                  "referencedDeclaration": 2039,
+                  "src": "1207:13:5",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_enum$_EmployeeState_$2039",
+                    "typeString": "enum ESOPTypes.EmployeeState"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 2057,
+                "name": "idx",
+                "nodeType": "VariableDeclaration",
+                "scope": 2058,
+                "src": "1269:10:5",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint16",
+                  "typeString": "uint16"
+                },
+                "typeName": {
+                  "id": 2056,
+                  "name": "uint16",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1269:6:5",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint16",
+                    "typeString": "uint16"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "Employee",
+            "nodeType": "StructDefinition",
+            "scope": 2081,
+            "src": "462:888:5",
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 2068,
+              "nodeType": "Block",
+              "src": "1460:361:5",
+              "statements": [
+                {
+                  "externalReferences": [
+                    {
+                      "employee": {
+                        "declaration": 2060,
+                        "isOffset": false,
+                        "isSlot": false,
+                        "src": "1801:8:5",
+                        "valueSize": 1
+                      }
+                    },
+                    {
+                      "emp": {
+                        "declaration": 2065,
+                        "isOffset": false,
+                        "isSlot": false,
+                        "src": "1794:3:5",
+                        "valueSize": 1
+                      }
+                    }
+                  ],
+                  "id": 2067,
+                  "nodeType": "InlineAssembly",
+                  "operations": "{\n    emp := employee\n}",
+                  "src": "1586:235:5"
+                }
+              ]
+            },
+            "id": 2069,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "serializeEmployee",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2061,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2060,
+                  "name": "employee",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2069,
+                  "src": "1381:24:5",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Employee_$2058_memory_ptr",
+                    "typeString": "struct ESOPTypes.Employee memory"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 2059,
+                    "name": "Employee",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 2058,
+                    "src": "1381:8:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Employee_$2058_storage_ptr",
+                      "typeString": "struct ESOPTypes.Employee storage pointer"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1380:26:5"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 2066,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2065,
+                  "name": "emp",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2069,
+                  "src": "1445:11:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_uint256_$9_memory_ptr",
+                    "typeString": "uint256[9] memory"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 2062,
+                      "name": "uint",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "1445:4:5",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "id": 2064,
+                    "length": {
+                      "argumentTypes": null,
+                      "hexValue": "39",
+                      "id": 2063,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "number",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "1450:1:5",
+                      "subdenomination": null,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_rational_9_by_1",
+                        "typeString": "int_const 9"
+                      },
+                      "value": "9"
+                    },
+                    "nodeType": "ArrayTypeName",
+                    "src": "1445:7:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_uint256_$9_storage_ptr",
+                      "typeString": "uint256[9] storage pointer"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1444:13:5"
+            },
+            "scope": 2081,
+            "src": "1354:467:5",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 2079,
+              "nodeType": "Block",
+              "src": "1944:50:5",
+              "statements": [
+                {
+                  "externalReferences": [
+                    {
+                      "serializedEmployee": {
+                        "declaration": 2073,
+                        "isOffset": false,
+                        "isSlot": false,
+                        "src": "1970:18:5",
+                        "valueSize": 1
+                      }
+                    },
+                    {
+                      "emp": {
+                        "declaration": 2076,
+                        "isOffset": false,
+                        "isSlot": false,
+                        "src": "1963:3:5",
+                        "valueSize": 1
+                      }
+                    }
+                  ],
+                  "id": 2078,
+                  "nodeType": "InlineAssembly",
+                  "operations": "{\n    emp := serializedEmployee\n}",
+                  "src": "1952:42:5"
+                }
+              ]
+            },
+            "id": 2080,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "deserializeEmployee",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2074,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2073,
+                  "name": "serializedEmployee",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2080,
+                  "src": "1854:26:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_uint256_$9_memory_ptr",
+                    "typeString": "uint256[9] memory"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 2070,
+                      "name": "uint",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "1854:4:5",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "id": 2072,
+                    "length": {
+                      "argumentTypes": null,
+                      "hexValue": "39",
+                      "id": 2071,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "number",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "1859:1:5",
+                      "subdenomination": null,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_rational_9_by_1",
+                        "typeString": "int_const 9"
+                      },
+                      "value": "9"
+                    },
+                    "nodeType": "ArrayTypeName",
+                    "src": "1854:7:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_uint256_$9_storage_ptr",
+                      "typeString": "uint256[9] storage pointer"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1853:28:5"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 2077,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2076,
+                  "name": "emp",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2080,
+                  "src": "1921:19:5",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Employee_$2058_memory_ptr",
+                    "typeString": "struct ESOPTypes.Employee memory"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 2075,
+                    "name": "Employee",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 2058,
+                    "src": "1921:8:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Employee_$2058_storage_ptr",
+                      "typeString": "struct ESOPTypes.Employee storage pointer"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1920:21:5"
+            },
+            "scope": 2081,
+            "src": "1825:169:5",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 2082,
+        "src": "49:1947:5"
+      }
+    ],
+    "src": "0:1997:5"
+  },
+  "legacyAST": {
+    "absolutePath": "/home/ethnode/parity/ESOP/contracts/ESOPTypes.sol",
+    "exportedSymbols": {
+      "ESOPTypes": [
+        2081
+      ]
+    },
+    "id": 2082,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 2032,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".11"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:5"
+      },
+      {
+        "absolutePath": "/home/ethnode/parity/ESOP/contracts/Types.sol",
+        "file": "./Types.sol",
+        "id": 2033,
+        "nodeType": "ImportDirective",
+        "scope": 2082,
+        "sourceUnit": 3704,
+        "src": "25:21:5",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 2081,
+        "linearizedBaseContracts": [
+          2081
+        ],
+        "name": "ESOPTypes",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "ESOPTypes.EmployeeState",
+            "id": 2039,
+            "members": [
+              {
+                "id": 2034,
+                "name": "NotSet",
+                "nodeType": "EnumValue",
+                "src": "183:6:5"
+              },
+              {
+                "id": 2035,
+                "name": "WaitingForSignature",
+                "nodeType": "EnumValue",
+                "src": "191:19:5"
+              },
+              {
+                "id": 2036,
+                "name": "Employed",
+                "nodeType": "EnumValue",
+                "src": "212:8:5"
+              },
+              {
+                "id": 2037,
+                "name": "Terminated",
+                "nodeType": "EnumValue",
+                "src": "222:10:5"
+              },
+              {
+                "id": 2038,
+                "name": "OptionsExercised",
+                "nodeType": "EnumValue",
+                "src": "234:16:5"
+              }
+            ],
+            "name": "EmployeeState",
+            "nodeType": "EnumDefinition",
+            "src": "162:90:5"
+          },
+          {
+            "canonicalName": "ESOPTypes.Employee",
+            "id": 2058,
+            "members": [
+              {
+                "constant": false,
+                "id": 2041,
+                "name": "issueDate",
+                "nodeType": "VariableDeclaration",
+                "scope": 2058,
+                "src": "515:16:5",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint32",
+                  "typeString": "uint32"
+                },
+                "typeName": {
+                  "id": 2040,
+                  "name": "uint32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "515:6:5",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 2043,
+                "name": "timeToSign",
+                "nodeType": "VariableDeclaration",
+                "scope": 2058,
+                "src": "592:17:5",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint32",
+                  "typeString": "uint32"
+                },
+                "typeName": {
+                  "id": 2042,
+                  "name": "uint32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "592:6:5",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 2045,
+                "name": "terminatedAt",
+                "nodeType": "VariableDeclaration",
+                "scope": 2058,
+                "src": "682:19:5",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint32",
+                  "typeString": "uint32"
+                },
+                "typeName": {
+                  "id": 2044,
+                  "name": "uint32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "682:6:5",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 2047,
+                "name": "fadeoutStarts",
+                "nodeType": "VariableDeclaration",
+                "scope": 2058,
+                "src": "841:20:5",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint32",
+                  "typeString": "uint32"
+                },
+                "typeName": {
+                  "id": 2046,
+                  "name": "uint32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "841:6:5",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 2049,
+                "name": "poolOptions",
+                "nodeType": "VariableDeclaration",
+                "scope": 2058,
+                "src": "930:18:5",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint32",
+                  "typeString": "uint32"
+                },
+                "typeName": {
+                  "id": 2048,
+                  "name": "uint32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "930:6:5",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 2051,
+                "name": "extraOptions",
+                "nodeType": "VariableDeclaration",
+                "scope": 2058,
+                "src": "1024:19:5",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint32",
+                  "typeString": "uint32"
+                },
+                "typeName": {
+                  "id": 2050,
+                  "name": "uint32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1024:6:5",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 2053,
+                "name": "suspendedAt",
+                "nodeType": "VariableDeclaration",
+                "scope": 2058,
+                "src": "1116:18:5",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint32",
+                  "typeString": "uint32"
+                },
+                "typeName": {
+                  "id": 2052,
+                  "name": "uint32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1116:6:5",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 2055,
+                "name": "state",
+                "nodeType": "VariableDeclaration",
+                "scope": 2058,
+                "src": "1207:19:5",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_enum$_EmployeeState_$2039",
+                  "typeString": "enum ESOPTypes.EmployeeState"
+                },
+                "typeName": {
+                  "contractScope": null,
+                  "id": 2054,
+                  "name": "EmployeeState",
+                  "nodeType": "UserDefinedTypeName",
+                  "referencedDeclaration": 2039,
+                  "src": "1207:13:5",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_enum$_EmployeeState_$2039",
+                    "typeString": "enum ESOPTypes.EmployeeState"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 2057,
+                "name": "idx",
+                "nodeType": "VariableDeclaration",
+                "scope": 2058,
+                "src": "1269:10:5",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint16",
+                  "typeString": "uint16"
+                },
+                "typeName": {
+                  "id": 2056,
+                  "name": "uint16",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1269:6:5",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint16",
+                    "typeString": "uint16"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "Employee",
+            "nodeType": "StructDefinition",
+            "scope": 2081,
+            "src": "462:888:5",
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 2068,
+              "nodeType": "Block",
+              "src": "1460:361:5",
+              "statements": [
+                {
+                  "externalReferences": [
+                    {
+                      "employee": {
+                        "declaration": 2060,
+                        "isOffset": false,
+                        "isSlot": false,
+                        "src": "1801:8:5",
+                        "valueSize": 1
+                      }
+                    },
+                    {
+                      "emp": {
+                        "declaration": 2065,
+                        "isOffset": false,
+                        "isSlot": false,
+                        "src": "1794:3:5",
+                        "valueSize": 1
+                      }
+                    }
+                  ],
+                  "id": 2067,
+                  "nodeType": "InlineAssembly",
+                  "operations": "{\n    emp := employee\n}",
+                  "src": "1586:235:5"
+                }
+              ]
+            },
+            "id": 2069,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "serializeEmployee",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2061,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2060,
+                  "name": "employee",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2069,
+                  "src": "1381:24:5",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Employee_$2058_memory_ptr",
+                    "typeString": "struct ESOPTypes.Employee memory"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 2059,
+                    "name": "Employee",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 2058,
+                    "src": "1381:8:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Employee_$2058_storage_ptr",
+                      "typeString": "struct ESOPTypes.Employee storage pointer"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1380:26:5"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 2066,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2065,
+                  "name": "emp",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2069,
+                  "src": "1445:11:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_uint256_$9_memory_ptr",
+                    "typeString": "uint256[9] memory"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 2062,
+                      "name": "uint",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "1445:4:5",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "id": 2064,
+                    "length": {
+                      "argumentTypes": null,
+                      "hexValue": "39",
+                      "id": 2063,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "number",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "1450:1:5",
+                      "subdenomination": null,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_rational_9_by_1",
+                        "typeString": "int_const 9"
+                      },
+                      "value": "9"
+                    },
+                    "nodeType": "ArrayTypeName",
+                    "src": "1445:7:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_uint256_$9_storage_ptr",
+                      "typeString": "uint256[9] storage pointer"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1444:13:5"
+            },
+            "scope": 2081,
+            "src": "1354:467:5",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 2079,
+              "nodeType": "Block",
+              "src": "1944:50:5",
+              "statements": [
+                {
+                  "externalReferences": [
+                    {
+                      "serializedEmployee": {
+                        "declaration": 2073,
+                        "isOffset": false,
+                        "isSlot": false,
+                        "src": "1970:18:5",
+                        "valueSize": 1
+                      }
+                    },
+                    {
+                      "emp": {
+                        "declaration": 2076,
+                        "isOffset": false,
+                        "isSlot": false,
+                        "src": "1963:3:5",
+                        "valueSize": 1
+                      }
+                    }
+                  ],
+                  "id": 2078,
+                  "nodeType": "InlineAssembly",
+                  "operations": "{\n    emp := serializedEmployee\n}",
+                  "src": "1952:42:5"
+                }
+              ]
+            },
+            "id": 2080,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "deserializeEmployee",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2074,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2073,
+                  "name": "serializedEmployee",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2080,
+                  "src": "1854:26:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_uint256_$9_memory_ptr",
+                    "typeString": "uint256[9] memory"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 2070,
+                      "name": "uint",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "1854:4:5",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "id": 2072,
+                    "length": {
+                      "argumentTypes": null,
+                      "hexValue": "39",
+                      "id": 2071,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "number",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "1859:1:5",
+                      "subdenomination": null,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_rational_9_by_1",
+                        "typeString": "int_const 9"
+                      },
+                      "value": "9"
+                    },
+                    "nodeType": "ArrayTypeName",
+                    "src": "1854:7:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_uint256_$9_storage_ptr",
+                      "typeString": "uint256[9] storage pointer"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1853:28:5"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 2077,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2076,
+                  "name": "emp",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2080,
+                  "src": "1921:19:5",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Employee_$2058_memory_ptr",
+                    "typeString": "struct ESOPTypes.Employee memory"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 2075,
+                    "name": "Employee",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 2058,
+                    "src": "1921:8:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Employee_$2058_storage_ptr",
+                      "typeString": "struct ESOPTypes.Employee storage pointer"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1920:21:5"
+            },
+            "scope": 2081,
+            "src": "1825:169:5",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 2082,
+        "src": "49:1947:5"
+      }
+    ],
+    "src": "0:1997:5"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.19+commit.c4cbbb05.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "2.0.0",
+  "updatedAt": "2018-03-18T07:17:38.617Z"
+}
